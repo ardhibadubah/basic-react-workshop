@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import clsx from 'clsx';
 
 // REACT HOOKS
 import { useState } from 'react';
@@ -12,20 +13,21 @@ function App() {
   const [scorePlayer1, setScorePlayer1] = useState(0)
   const [scorePlayer2, setScorePlayer2] = useState(0)
   const [alerts, setAlerts] = useState([])
+  const [alertIsPrimary, setAlertIsPrimary] = useState(true)
+
+  // STYLING
+  const alertStyle = clsx("alert", alertIsPrimary ? "alert-primary" : "alert-danger")
+
+  // METHODS / FUNCTIONS
+  const handleToggleColor = () => {
+    setAlertIsPrimary( !alertIsPrimary )
+  }
 
   const ubahScorePlayer1 = () => {
     const newScorePlayer1 = scorePlayer1 + 1
     setScorePlayer1(newScorePlayer1)
-
+    
     // == ADD NEW ITEM TO ALERT
-    // == CONTOH 1
-    // const newAlerts = alerts.concat(["Goal by Player 1"])
-    // setAlerts(newAlerts)
-    // == CONTOH 2
-    // const arr = [...alerts]
-    // arr.push("Goal by Player 1")
-    // setAlerts(arr)
-    // == CONTOH 3
     setAlerts([...alerts, "Goal by Player 1"])
   }
 
@@ -50,10 +52,17 @@ function App() {
           handleChangeScoreP2={ubahScorePlayer2}
         />
 
+        <button 
+          className="btn btn-secondary my-2"
+          onClick={handleToggleColor}
+        >
+          Primary/Danger
+        </button>
+        
         {
           alerts.map((item, idx) => {
             return(
-              <div key={"alert-" + idx} className="alert alert-primary">
+              <div key={"alert-" + idx} className={alertStyle}>
                 {item}
               </div>
             )
