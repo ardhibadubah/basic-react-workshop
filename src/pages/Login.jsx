@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components/Card";
 
 const Login = () => {
@@ -34,6 +34,28 @@ const Login = () => {
     e.preventDefault()
     console.log(formData)
   }
+
+  // Lifecycle -> function
+  // componentDidMount
+  // componentDidUpdate
+  // componentWillUnmount
+
+  // Component Did Mount
+  useEffect(() => {
+    console.log("COMPONENT DID MOUNT")
+  }, [])
+
+  // Component Did Update
+  useEffect(() => {
+    console.log("COMPONENT DID UPDATE")
+  })
+
+  // Component Will Unmount
+  useEffect(() => {
+    return () => {
+      console.log("COMPONENT WILL UNMOUNT")
+    }
+  }, [])
 
   return (
     <div className="container p-5">
