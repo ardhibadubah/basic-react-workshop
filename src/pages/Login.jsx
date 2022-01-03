@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "../components/Card";
 
 const Login = () => {
 
@@ -35,34 +36,36 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
-      <form className="mt-5">
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          className="form-control"
-          placeholder="Input your username"
-          value={formData.username}
-          onChange={handleInputChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          className="form-control"
-          placeholder="Input your password"
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-        <button 
-          type="submit" 
-          className="btn btn-primary"
-          onClick={handleSubmitClick}
-        >
-          Login
-        </button>
-      </form>
+    <div className="container p-5">
+      <Card>
+        <form>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            className="form-control mb-3"
+            placeholder="Input your username"
+            value={formData.username}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            className="form-control mb-3"
+            placeholder="Input your password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+          <button 
+            type="submit" 
+            className="btn btn-primary mb-3"
+            onClick={handleSubmitClick}
+          >
+            Login
+          </button>
+        </form>
+      </Card>
     </div>
   );
 };
